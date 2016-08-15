@@ -1,9 +1,9 @@
-CREATE TABLE config
+CREATE TABLE IF NOT EXISTS config
 (
 	config_option VARCHAR(20) PRIMARY KEY,
 	config_value TEXT
 );
-INSERT INTO TABLE config
+INSERT INTO config
 (
 	config_option,
 	config_value
@@ -19,21 +19,21 @@ VALUES
 );
 
 
-CREATE TABLE movie
+CREATE TABLE IF NOT EXISTS movie
 (
 	movie_imdbid VARCHAR(20) PRIMARY KEY,
 	movie_name VARCHAR(250)
 );
 
 
-CREATE TABLE libsrc -- Library source
+CREATE TABLE IF NOT EXISTS libsrc -- Library source
 (
 	libsrc_name VARCHAR(20) PRIMARY KEY,
 	libsrc_description TEXT,
-	libsrc_engine VARCHAR(50), -- What is used to store the library. Eg. "kodi.mysql.99"
+	libsrc_engine VARCHAR(50) -- What is used to store the library. Eg. "kodi.mysql.99"
 );
 
-CREATE TABLE libparam -- Parameters for connecting to a libsrc library
+CREATE TABLE IF NOT EXISTS libparam -- Parameters for connecting to a libsrc library
 (
 	libparam_srcname VARCHAR(20),-- Which library source the parameter is associated with. FK to "libsrc"
 	libparam_name VARCHAR(20), -- The parameter's name eg. db_user
